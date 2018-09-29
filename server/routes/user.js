@@ -1,16 +1,19 @@
 import User from '../controllers/user';
 import checkAuth from '../middleware/checkAuthentication';
+import { Router } from "express";
 
-export default function(app) {
+const router = Router();
 
-    app.post('/register', User.register);
 
-    app.post('/authenticate', User.authenticate);
+    router.post('/register', User.register);
 
-    app.post('/delete/:userId', checkAuth , User.delete);
+    router.post('/authenticate', User.authenticate);
 
-    app.post('/reset', checkAuth , User.passwordReset);
+    router.post('/delete/:userId', checkAuth , User.delete);
 
-    app.get('/users', checkAuth , User.list);
+    router.post('/reset', checkAuth , User.passwordReset);
 
-}
+    router.get('/users', checkAuth , User.list);
+
+
+export default router;

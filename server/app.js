@@ -3,8 +3,8 @@ import cors from 'cors';
 import bodyParser from 'body-parser';
 import dotenv from 'dotenv';
 import mongoose from 'mongoose';
-import indexRoute from './routes/index';
 import config from './config/database';
+import routes from '../server/routes/user';
 
 
 dotenv.load();
@@ -30,7 +30,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cors());
 
 
-indexRoute(app);
+app.use('/', routes)
 
 const port = parseInt(process.env.PORT, 10) || 3000;
 
