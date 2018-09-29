@@ -15,5 +15,5 @@ const router = Router();
 
     router.get('/users', checkAuth , User.list);
 
-
+ 
 export default router;
